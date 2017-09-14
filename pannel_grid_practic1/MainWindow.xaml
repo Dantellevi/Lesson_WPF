@@ -6,7 +6,115 @@
         xmlns:local="clr-namespace:pannel_grid_practic1"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    
+    <!--
+    На верхнем  уровне окна  Window расположена панель  DockPanel, которая организует 
+меню,  панель  StackPanel,  содержащую  полосу  с  кнопками  (повернутую  на  90°  с 
+помощью преобразования RotateTransform), и сетку из одной ячейки где находятся три 
+сетки,  определяющие  «слои».  Отметим,  что  меню  Menu  добавляется  в  DockPanel 
+раньше, чем StackPanel, чтобы оно растянулось на ширину вдоль верхнего края окна. 
+В каждой сетке-слое имеется всего один столбец для хранения содержимого и во всех 
+трех  случаях  содержимое  заключено  в  сетку.  Каждый  разделитель  GridSplitter 
+пристыкован  к  левой  стороне  столбца  с  содержимым,  поэтому  он  перекрывает 
+содержимое  из  других  слоев.  Отметим  одну  тонкость  -  заголовок  каждой  панели 
+помещен  не  в  метку  Label,  а  в  элемент  TextBlock,  чтобы  можно  было  установить 
+свойство  TextTrimming-―CharacterEllipsis‖,  тогда  при  уменьшении  размера  панели 
+система  будет  не  просто  отсекать  текст  заголовка,  а  заменять  отброшенную  часть 
+многоточием.
+    
+    -->
+    
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            
+        </Menu>
+        <!--Полоса с кнопками , пристыкована к правому краю:-->
+        <StackPanel Name="buttonBar" Orientation="Horizontal" DockPanel.Dock="Right">
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="90">
+                    
+                </RotateTransform>
+            </StackPanel.LayoutTransform>
+            <Button Name="panel1Button" MouseEnter="panel1Button_MouseEnter">
+                Toolbox
+            </Button>
+            <Button Name="panel2Button" MouseEnter="panel2Button_MouseEnter">
+                Solution Explorer
+            </Button>
+        </StackPanel>
+        <!--Сетка содержащая три дочерних сетки заполняет DockPnel:-->
+        <Grid Name="parentGrid" Grid.IsSharedSizeScope="True">
+            <!--слой 0:-->
+            <Grid Name="layer0" MouseEnter="layer0_MouseEnter">
+                
+            </Grid>
+            <!--слой 1:-->
+            <Grid Name="layer1" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition SharedSizeGroup="column1" Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <!--Столбец 0 пуст.Но столбец 1 содержит элементы Grid и GritSplitter:-->
+                <Grid Grid.Column="1" MouseEnter="Grid_MouseEnter_3"
+                      Background="{DynamicResource
+                    {
+                    x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto">
+                            
+                        </RowDefinition>
+                        <RowDefinition/>
+                        
+                    </Grid.RowDefinitions>
+                    <!--строка 0 содержит заголовок, а строка 1 содержимое конткретной панели:-->
+                    <DockPanel Grid.Row="0">
+                        <Button Name="panel1Pin" Width="26" DockPanel.Dock="Right" Click="panel1Pin_Click" Background="White">
+                            <Image Name="panel1PinImage"></Image>
+                        </Button>
+                        <TextBlock Padding="8" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource
+                            {
+                            x:Static SystemColors.ActiveCaptionTextBrushKey
+                            }}" 
+                                   DockPanel.Dock="Left">Toolbox</TextBlock>
+                    </DockPanel>
+                </Grid>
+                <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Left"/>
+            </Grid>
+            <!--слой 2:-->
+            <Grid Name="layer2" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition SharedSizeGroup="column2" Width="auto"/>
+                    
+                </Grid.ColumnDefinitions>
+                <!--Столбец 0 пуст, Но столбец 1 содержит элементы Grid и GridSplitter-->
+                <Grid Grid.Column="1" MouseEnter="Grid_MouseEnter_4" Background="{DynamicResource
+                    {
+                    x:Static SystemColors.ActiveCaptionBrushKey
+                    }}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        
+                    </Grid.RowDefinitions>
+                    <!--Строка 0 содержит заголовок, а строка1 и 2 содержимое конткретной панели:-->
+                    <DockPanel Grid.Row="0">
+                        <Button Name="panel2Pin" Width="26" DockPanel.Dock="Right" Click="panel2Pin_Click" Background="White">
+                            <Image Name="pane2PinImage" />
+                        </Button>
+                        <TextBlock Padding="8" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource
+                            {
+                            x:Static SystemColors.ActiveCaptionTextBrushKey
+                            }}" DockPanel.Dock="Left">Solution Explorer</TextBlock>
+                    </DockPanel>
+                </Grid>
+                <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Left">
+                    
+                </GridSplitter>
+                
+            </Grid>
+        </Grid>
+    </DockPanel>
 </Window>
