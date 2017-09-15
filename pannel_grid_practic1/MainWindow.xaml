@@ -70,7 +70,7 @@
                     <!--строка 0 содержит заголовок, а строка 1 содержимое конткретной панели:-->
                     <DockPanel Grid.Row="0">
                         <Button Name="panel1Pin" Width="26" DockPanel.Dock="Right" Click="panel1Pin_Click" Background="White">
-                            <Image Name="panel1PinImage"></Image>
+                            <Image Name="panel1PinImage" Source="bin/Debug/pinHorizontal.gif"></Image>
                         </Button>
                         <TextBlock Padding="8" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource
                             {
@@ -102,7 +102,7 @@
                     <!--Строка 0 содержит заголовок, а строка1 и 2 содержимое конткретной панели:-->
                     <DockPanel Grid.Row="0">
                         <Button Name="panel2Pin" Width="26" DockPanel.Dock="Right" Click="panel2Pin_Click" Background="White">
-                            <Image Name="pane2PinImage" />
+                            <Image Name="pane2PinImage" Source="bin/Debug/pinHorizontal.gif" />
                         </Button>
                         <TextBlock Padding="8" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource
                             {
