@@ -1,0 +1,23 @@
+﻿<!--Оформление круглой, элипсообразной формы-->
+    <Window x:Class="GadgetApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GadgetApplication"
+        mc:Ignorable="d"
+         Height="350" Width="525"
+            AllowsTransparency="True" WindowStyle="None"
+            Background="Transparent"
+            MouseLeftButtonDown="Window_MouseLeftButtonDown"
+            >
+    <Grid>
+        <Ellipse Fill="Red" Opacity="0.5" Margin="20">
+            <Ellipse.Effect>
+                <DropShadowEffect/>
+            </Ellipse.Effect>
+        </Ellipse>
+        <Button Margin="150" Click="Button_Click">Закрыть</Button>
+        
+    </Grid>
+</Window>
